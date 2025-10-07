@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabel Nilai Siswa — Futuristic Design</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* === GLOBAL === */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, #0f172a, #020617);
+        color: #e5e7eb;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* === BACKGROUND EFFECT === */
+      .bg-orb,
+      .bg-orb2 {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.35;
+        z-index: -1;
+      }
+
+      .bg-orb {
+        width: 400px;
+        height: 400px;
+        background: #2563eb;
+        top: -100px;
+        left: -100px;
+        animation: float1 10s infinite alternate ease-in-out;
+      }
+
+      .bg-orb2 {
+        width: 500px;
+        height: 500px;
+        background: #a855f7;
+        bottom: -120px;
+        right: -120px;
+        animation: float2 12s infinite alternate ease-in-out;
+      }
+
+      @keyframes float1 {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(60px, 40px);
+        }
+      }
+
+      @keyframes float2 {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(-50px, -30px);
+        }
+      }
+
+      /* === HEADER === */
+      header {
+        width: 100%;
+        text-align: center;
+        padding: 40px 0;
+        background: rgba(17, 24, 39, 0.7);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        border-bottom: 2px solid rgba(59, 130, 246, 0.6);
+        animation: slideDown 1.2s ease;
+      }
+
+      header h1 {
+        font-size: 30px;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #60a5fa, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* === MAIN === */
+      main {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 40px;
+        margin: 60px 20px;
+        width: 90%;
+        max-width: 900px;
+        box-shadow: 0 0 25px rgba(59, 130, 246, 0.15);
+        animation: fadeIn 1.4s ease;
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #93c5fd;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* === TABLE === */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+
+      th,
+      td {
+        padding: 14px 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      th {
+        background: linear-gradient(90deg, #2563eb, #7c3aed);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      tr:hover {
+        background: rgba(59, 130, 246, 0.15);
+        transform: scale(1.01);
+      }
+
+      td {
+        color: #e2e8f0;
+      }
+
+      td strong {
+        color: #60a5fa;
+      }
+
+      /* === FOOTER === */
+      footer {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        color: #a5b4fc;
+        font-size: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(17, 24, 39, 0.6);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 2s ease;
+      }
+
+      /* === RESPONSIVE === */
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 22px;
+        }
+        main {
+          padding: 25px;
+        }
+        table {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-orb"></div>
+    <div class="bg-orb2"></div>
+
+    <header>
+      <h1>Tabel Nilai Siswa</h1>
+    </header>
+
+    <main>
+      <h3>Data Nilai</h3>
+      <table id="nilaiTabel"></table>
+    </main>
+
+    <footer>© 2025 Muh Zacky Maulidin</footer>
+
+    <script>
+      const data = [
+        { nama: "Asep", tugas: 80, uts: 95, uas: 85 },
+        { nama: "Iwan", tugas: 75, uts: 75, uas: 90 },
+        { nama: "Cepi", tugas: 70, uts: 80, uas: 90 },
+        { nama: "Agus", tugas: 65, uts: 40, uas: 55 },
+        { nama: "Dadang", tugas: 60, uts: 70, uas: 60 },
+      ];
+
+      const tabel = document.getElementById("nilaiTabel");
+      let html = `
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Siswa</th>
+          <th>Tugas</th>
+          <th>UTS</th>
+          <th>UAS</th>
+          <th>Nilai Akhir</th>
+        </tr>
+      </thead>
+      <tbody>
+    `;
+
+      data.forEach((item, i) => {
+        const nilaiAkhir = (
+          0.4 * item.tugas +
+          0.3 * item.uts +
+          0.3 * item.uas
+        ).toFixed(1);
+        html += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${item.nama}</td>
+          <td>${item.tugas}</td>
+          <td>${item.uts}</td>
+          <td>${item.uas}</td>
+          <td><strong>${nilaiAkhir}</strong></td>
+        </tr>
+      `;
+      });
+
+      html += `</tbody>`;
+      tabel.innerHTML = html;
+    </script>
+  </body>
+</html>
