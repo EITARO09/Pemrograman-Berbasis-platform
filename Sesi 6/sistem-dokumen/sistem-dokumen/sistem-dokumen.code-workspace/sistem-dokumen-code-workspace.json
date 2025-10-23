@@ -1,0 +1,21 @@
+{
+    "folders": [
+        {
+            "name": "doc.core",
+            "path": "doc.core"
+        },
+        {
+            "name": "doc.txt",
+            "path": "doc.txt"
+        },
+        {
+            "name": "doc.app",
+            "path": "doc.app"
+        }
+    ],
+    "settings": {
+        "java.project.sourcePaths": [],
+        "java.project.outputPath": "",
+        "java.compile.nullAnalysis.mode": "automatic"
+    }
+}
